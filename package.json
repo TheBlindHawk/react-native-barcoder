@@ -1,0 +1,64 @@
+{
+    "name": "react-native-barcoder",
+    "version": "0.0.1",
+    "description": "a minimal react-native package for displaying a barcode",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "files": [ "dist/" ],
+    "dependencies": {
+        "jsbarcode": "^3.11.6",
+        "react-native-svg": "^15.1.0"
+    },
+    "peerDependencies": {
+        "react": "^18.2.0",
+        "react-native": "0.73.6"
+    },
+    "devDependencies": {
+        "@babel/preset-env": "^7.23.9",
+        "@types/jsbarcode": "^3.11.4",
+        "@types/react": "^18.2.75",
+        "@typescript-eslint/eslint-plugin": "^6.20.0",
+        "@typescript-eslint/parser": "^6.20.0",
+        "dprint": "^0.45.0",
+        "eslint": "^8.56.0",
+        "jsdom": "^24.0.0",
+        "npm-run-all": "^4.1.5",
+        "typescript": "^5.4.4"
+    },
+    "scripts": {
+        "lint": "run-p lint:*",
+        "lint:eslint": "eslint src",
+        "lint:tsc": "tsc --noEmit",
+        "format": "dprint fmt '**/*.{js,ts,tsx,json}'",
+        "format-check": "dprint check '**/*.{js,ts,tsx,json}'",
+        "build": "tsc"
+    },
+    "react-native-builder-bob": {
+        "source": "src",
+        "output": "dist",
+        "targets": [
+            "typescript"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/TheBlindHawk/react-native-barcode-svg.git"
+    },
+    "keywords": [
+        "react-native",
+        "jsbarcode",
+        "barcode",
+        "builder"
+    ],
+    "author": "TheBlindHawk",
+    "license": "ISC",
+    "babel": {
+        "presets": [
+            "@babel/preset-env"
+        ]
+    },
+    "bugs": {
+        "url": "https://github.com/TheBlindHawk/react-native-barcode-svg/issues"
+    },
+    "homepage": "https://github.com/TheBlindHawk/react-native-barcode-svg#readme"
+}

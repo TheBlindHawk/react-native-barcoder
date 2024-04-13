@@ -13,7 +13,7 @@ export type Options = {
   color: string;
 }
 
-export type Barcode = {
+export type BarValue = {
   x: number,
   y: number,
   w: number,

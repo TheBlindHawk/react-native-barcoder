@@ -1,4 +1,4 @@
-<h1 align="center">Customizable Roulette Library</h1>
+<h1 align="center">React Native Barcoder</h1>
 
 <div align="center">
     
@@ -49,3 +49,6 @@ regarding each value inside options:
 | width         | int       | 2         | the width of the barcode, use max to apply a limit |
 | height        | int       | 100       | the height of the barcode                          |
 | color         | string    | black     | the color of the bars of the barcode               |
+
+NB: the minimum bar width that can be set using max width is 1. 
+If the total width surpasses the max width, max width will be ignored and the barcode will be displayed with a bar width of 1

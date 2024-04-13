@@ -1,6 +1,6 @@
 import Svg, { Rect } from 'react-native-svg';
 import formats from 'jsbarcode/src/barcodes';
-import type { Constructor, Options, Barcode } from './definitions';
+import type { Constructor, Options, BarValue, Format } from './definitions';
 import { defaults } from './definitions';
 import ErrorBoundary from './Boundary';
 
@@ -17,7 +17,7 @@ const Barcode = ({value, options}: Constructor) => {
 
   if(!binary) return <></>
 
-  const barcodes: Array<Barcode> = []
+  const barcodes: Array<BarValue> = []
   let counter = 0;
   const w = 
     typeof opts.width === 'number' ? opts.width :
@@ -44,5 +44,7 @@ const Barcode = ({value, options}: Constructor) => {
     </ErrorBoundary>
   )
 };
+
+export type { Constructor, Options, Format, BarValue }
 
 export default Barcode;

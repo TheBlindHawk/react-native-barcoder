@@ -1,36 +1,31 @@
-import React from "react";
+import React from 'react';
 
-class ErrorBoundary extends React.Component {
-  state: { hasError: boolean } = { hasError: false };
-  props: { children: React.ReactNode } = { children: null };
-  constructor(props: { children: React.ReactNode }) {
+export default class ErrorBoundary extends React.Component {
+  constructor(props) {
     super(props);
     this.state = { hasError: false };
   }
 
-  static getDerivedStateFromError(error: Error) {
+  static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
-    console.error(error)
     return { hasError: true };
   }
 
-  componentDidCatch(error: Error, info: React.ErrorInfo) {
-    // Example "componentStack":
-    //   in ComponentThatThrows (created by App)
-    //   in ErrorBoundary (created by App)
-    //   in div (created by App)
-    //   in App
-    console.error(error, info)
+  componentDidCatch(error, errorInfo) {
+    // You can also log the error to an error reporting service
+    console.error(error, errorInfo);
   }
 
   render() {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <div>in issue occurred while rendering the barcode</div>
+      return <h1>Something went wrong.</h1>;
     }
 
-    return this.props.children;
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    return this.props.children; 
   }
 }
-
-export default ErrorBoundary;

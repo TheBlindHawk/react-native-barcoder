@@ -1,8 +1,8 @@
-import Svg, { Rect } from 'react-native-svg';
 import formats from 'jsbarcode/src/barcodes';
 import type { Constructor, Options, BarValue, Format } from './definitions';
 import { defaults } from './definitions';
 import ErrorBoundary from './Boundary';
+import { View } from 'react-native';
 
 const Barcode = ({value, options}: Constructor) => {
 
@@ -36,11 +36,11 @@ const Barcode = ({value, options}: Constructor) => {
 
   return (
     <ErrorBoundary>
-      <Svg width={w*binary.length} height={opts.height} fill={opts.color}>
+      <View style={{width: w*binary.length, height: opts.height}}>
         {barcodes.map(({x, y, w, h}, i) => (
-          <Rect key={i} x={x} y={y} width={w} height={h} />
+          <View key={i} style={{position: 'absolute', left: x, top: y, width: w, height: h, backgroundColor: opts.color}} />
         ))}
-      </Svg>
+      </View>
     </ErrorBoundary>
   )
 };

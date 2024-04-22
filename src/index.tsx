@@ -6,7 +6,7 @@ import { View } from 'react-native';
 
 const Barcode = ({value, options}: Constructor) => {
 
-  const opts = { ...defaults, ...options } as Options
+  const opts = { ...defaults.options, ...options } as Options
   const encoder = new formats[opts.format](value, opts)
 
   if (!encoder.valid()) {

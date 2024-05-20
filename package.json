@@ -1,15 +1,10 @@
 {
     "name": "react-native-barcoder",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "a minimal react-native package for displaying a barcode",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
-    "files": [
-        "dist/"
-    ],
-    "dependencies": {
-        "jsbarcode": "^3.11.6"
-    },
+    "files": [ "dist/" ],
     "peerDependencies": {
         "react": "^18.2.0",
         "react-native": "0.73.6"

@@ -86,14 +86,15 @@ const Section = ({opts, values: { barcodes, text, textWidth, textPos }}: Section
           backgroundColor: opts.color
         }} />
       ))}
-      {opts.displayValue && barcodes.length > 0 && text && (
+      {opts.displayValue && text && (
         <Text style={{
           position: 'absolute',
           textAlign: opts.textAlign,
-          top: barcodes[0].h,
+          fontSize: opts.fontSize,
+          top: barcodes[0]?.h ?? opts.height,
           left: textPos,
           width: textWidth,
-          backgroundColor: 'grey'
+          backgroundColor: opts.background
         }}>
           {text}
         </Text>

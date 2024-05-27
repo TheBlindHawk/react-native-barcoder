@@ -28,16 +28,26 @@ const options = { /* add your options here*/ }
 <Barcode value="barcoder" options={options}/>
 ```
 
+## features
+
+- **Support** for all types of barcodes including EAN/UPC
+- **No external dependencies** required for running the code
+- **Easy customization** taking jsbarcode as an example
+
 ## options
 
-set up the options parameter (taken from [jsbarcode](https://github.com/lindell/JsBarcode/blob/master/README.md#options))
+set up the options parameter
 
 ```typescript
 interface Options = {
   format: Format;
-  width: number | { max?: number };
+  width: number;
   height: number;
+  background: string;
   color: string;
+  displayValue: boolean;
+  flat: boolean;
+  lastChar: boolean;
 };
 ```
 
@@ -46,9 +56,35 @@ regarding each value inside options:
 | Value         | Type      | Default   | Comment        |
 | ------------- | --------- | --------- | -------------- |
 | format        | Format    | 'CODE128' | the format you want to use to display the barcode  |
-| width         | int       | 2         | the width of the barcode, use max to apply a limit |
+| width         | int       | 2         | the width of the barcode                           |
 | height        | int       | 100       | the height of the barcode                          |
+| background    | string    | white     | the background color of the object                 |
 | color         | string    | black     | the color of the bars of the barcode               |
+| displayValue  | boolean   | true      | display/hide the string value of the barcode       |
+| flat          | boolean   | false     | for EAN/UPC only, show/hide barcode guards         |
+| lastChar      | char      | null      | display a last character for EAN13 barcodes        |
 
-NB: the minimum bar width that can be set using max width is 1. 
-If the total width surpasses the max width, max width will be ignored and the barcode will be displayed with a bar width of 1
+### formats
+
+Here is a list of supported formats
+> CODE39 | CODE128 | CODE128A | CODE128B | CODE128C  
+> EAN13 | EAN8 | EAN5 | EAN2  
+> UPC | UPCE  
+> ITF14 | ITF  
+> MSI | MSI10 | MSI11 | MSI1010 | MSI1110  
+> pharmacode | codabar | GenericBarcode  
+
+### margins
+
+you can set the margins directly on the element:
+```typescript
+<Barcode value="barcoder" options={options} margin={20} marginLeft={40}/>
+```
+
+## aknowledgements
+
+This code relies on [jsbarcode](https://github.com/lindell/JsBarcode/blob/master/README.md#options)'s math files to transform the value into a binary.
+
+## contributions
+
+Any contributions are welcome!

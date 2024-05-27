@@ -10,15 +10,14 @@ export default function App() {
       options={{
         format: 'EAN13',
         width: 2,
-        height: 100,
+        height: 50,
         background: 'white',
         color: 'black',
         displayValue: true,
-        fontSize: 20,
         font: 'monospace',
         textAlign: 'center',
         textPosition: 'bottom',
-        textMargin: 20,
+        textMargin: 10,
       }}
     />
   );

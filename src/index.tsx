@@ -2,7 +2,7 @@ import formats from './barcodes';
 import type { Constructor, Binary as Encoded, Options, Fonts, BarValue, Format } from './definitions';
 import { defaults } from './definitions';
 import ErrorBoundary from './Boundary';
-import { View } from 'react-native';
+import { View, Text } from 'react-native';
 
 const Barcode = ({value, options, ...styles}: Constructor) => {
 
@@ -14,10 +14,11 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
   }
 
   const encoded: Encoded | Encoded[] = encoder.encode()
+  let leftmost = 0
 
   const asBarcodes = (encoded: Encoded) => {
     const binary = encoded.data
-    if(!binary) return { barcodes: [], text: '' }
+    if(!binary) return { barcodes: [], text: '', textWidth: 0, textPos: leftmost }
 
     const barcodes: Array<BarValue> = []
     let counter = 0
@@ -28,21 +29,25 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
       if (binary[b] === '1') { counter++ }
       const isLast = b === binary.length - 1;
       if ((binary[b] !== '1' || isLast) && counter > 0) {
-        const x = (b - counter - Number(isLast)) * w
+        const x = leftmost + (b - counter + Number(binary[b])) * w
         barcodes.push({x, y: 0, w: w * counter, h})
         counter = 0
       }
     }
 
-    return { barcodes, text: encoded.text }
+    const textPos = leftmost
+    leftmost += binary.length * w
+
+    return { barcodes, text: encoded.text, textWidth: binary.length * w, textPos }
   }
 
   return (
     <ErrorBoundary>
       <View style={styles}>
         {Array.isArray(encoded) ? (
-          encoded.map((encoded) => (
+          encoded.map((encoded, i) => (
             <Section
+              key={i}
               opts={opts}
               values={asBarcodes(encoded)}
             />
@@ -62,13 +67,15 @@ type SectionContructor = {
   opts: Options & Fonts,
   values: {
     barcodes: BarValue[],
-    text?: string
+    text?: string,
+    textWidth: number,
+    textPos: number
   }
 }
 
-const Section = ({opts, values: { barcodes, text }}: SectionContructor) => {
+const Section = ({opts, values: { barcodes, text, textWidth, textPos }}: SectionContructor) => {
   return (
-    <View>
+    <View style={{position:'relative'}}>
       {barcodes.map(({x, y, w, h}, i) => (
         <View key={i} style={{
           position: 'absolute',
@@ -80,14 +87,16 @@ const Section = ({opts, values: { barcodes, text }}: SectionContructor) => {
         }} />
       ))}
       {opts.displayValue && barcodes.length > 0 && text && (
-        <View style={{
+        <Text style={{
           position: 'absolute',
+          textAlign: opts.textAlign,
           top: barcodes[0].h,
-          left: barcodes[0].x,
-          backgroundColor: opts.color
+          left: textPos,
+          width: textWidth,
+          backgroundColor: 'grey'
         }}>
           {text}
-        </View>
+        </Text>
       )}
     </View>
   )

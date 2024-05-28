@@ -1,4 +1,5 @@
 import React from 'react';
+import { Text } from 'react-native';
 
 export default class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -21,7 +22,7 @@ export default class ErrorBoundary extends React.Component {
     // @ts-ignore
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>;
+      return <Text>Something went wrong.</Text>;
     }
 
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment

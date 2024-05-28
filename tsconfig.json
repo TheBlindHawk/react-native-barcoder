@@ -1,20 +1,26 @@
 {
-    "compilerOptions": {
-        "types": ["node"],
-        "jsx": "react-jsx",
-        "allowJs": true,
-        "declaration": true,
-        "declarationMap": true,
-        "skipLibCheck": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "noImplicitAny": false,
-        "isolatedModules": true,
-        "strict": true,
-        "outDir": "dist/",
-        "rootDir": "src/",
-    },
-    "include": [ "src/*" ],
-    "exclude": [ "src/Boundary"]
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "isolatedModules": true,
+    "strict": true,
+    "outDir": "dist/",
+    "rootDir": "src/"
+  },
+  "include": [
+    "src/*"
+  ],
+  "exclude": [
+    "src/Boundary"
+  ],
+  "extends": "expo/tsconfig.base"
 }
-  

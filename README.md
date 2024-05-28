@@ -78,9 +78,24 @@ Here is a list of supported formats
 
 you can set the margins directly on the element:
 ```typescript
-<Barcode value="barcoder" options={options} margin={20} marginLeft={40}/>
+<Barcode value="barcoder" options={options} marginLeft={40}/>
 ```
 
+## development
+
+You can try out the code locally using expo after cloning!
+Change the main directory in the package.json to 'index.js'
+```json
+{
+    "name": "react-native-barcoder",
+    "main": "dist/index.js", // <-- change this to "index.js"
+    /* ... */
+}
+```
+Then customize the ```App.tsx``` file as you like and run
+```
+npm run dev
+```
 ## aknowledgements
 
 This code relies on [jsbarcode](https://github.com/lindell/JsBarcode/blob/master/README.md#options)'s math files to transform the value into a binary.

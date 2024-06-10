@@ -83,17 +83,18 @@ you can set the margins directly on the element:
 
 ## development
 
-You can try out the code locally using expo after cloning!
+You can try out the code locally using expo after cloning!  
 Change the main directory in the package.json to 'index.js'
-```json
+```js
 {
     "name": "react-native-barcoder",
-    "main": "dist/index.js", // <-- change this to "index.js"
-    /* ... */
+    "main": "dist/index.js", <-- change this to "index.js"
+    ...
 }
 ```
 Then customize the ```App.tsx``` file as you like and run
 ```
+npm run build
 npm run dev
 ```
 ## aknowledgements

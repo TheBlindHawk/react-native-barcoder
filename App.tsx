@@ -1,5 +1,5 @@
 import React from 'react';
-import Barcode from './src';
+import Barcode from './dist';
 
 export default function App() {
   return (

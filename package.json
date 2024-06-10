@@ -1,8 +1,8 @@
 {
     "name": "react-native-barcoder",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "a minimal react-native package for displaying a barcode",
-    "main": "dist/index.js",
+    "main": "index.js",
     "types": "dist/index.d.ts",
     "files": [
         "dist/"
@@ -30,18 +30,24 @@
         "lint:tsc": "tsc --noEmit",
         "format": "dprint fmt '**/*.{js,ts,tsx,json}'",
         "format-check": "dprint check '**/*.{js,ts,tsx,json}'",
-        "build": "tsc --noEmit false"
+        "build": "tsc --noEmit false && rm -r dist/barcodes && cp -r src/barcodes dist/barcodes"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/TheBlindHawk/react-native-barcode-svg.git"
+        "url": "git+https://github.com/TheBlindHawk/react-native-barcoder.git"
     },
     "keywords": [
         "react-native",
         "jsbarcode",
         "barcode",
         "display",
-        "builder"
+        "builder",
+        "code128",
+        "upc",
+        "ean",
+        "itf",
+        "msi",
+        "pharmacode"
     ],
     "author": "TheBlindHawk",
     "license": "MIT",
@@ -51,7 +57,7 @@
         ]
     },
     "bugs": {
-        "url": "https://github.com/TheBlindHawk/react-native-barcode-svg/issues"
+        "url": "https://github.com/TheBlindHawk/react-native-barcoder/issues"
     },
-    "homepage": "https://github.com/TheBlindHawk/react-native-barcode-svg#readme"
+    "homepage": "https://github.com/TheBlindHawk/react-native-barcoder#readme"
 }

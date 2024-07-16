@@ -18,7 +18,11 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
   let leftmost = 0
 
   const baseH = opts.height + (opts.displayValue ? opts.textMargin * 2 + opts.fontSize : 0)
-  const baseW = encoded instanceof Array ? encoded.reduce((n, {data}) => n + (data?.length ?? 0), 0) : (encoded.data?.length ?? 0) + (lastChar ? opts.fontSize : 0)
+  const baseW = (
+      encoded instanceof Array ?
+      encoded.reduce((n, {data}) => n + (data?.length ?? 0) * opts.width, 0) :
+      encoded.data?.length ?? 0
+    ) + (lastChar ? opts.fontSize : 0)
 
   const asBarcodes = (encoded: Encoded) => {
     const binary = encoded.data
@@ -47,7 +51,7 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
 
   return (
     <ErrorBoundary>
-      <View style={{...styles, height: baseH, width: baseW}}>
+      <View style={{...styles, height: baseH, width: baseW, backgroundColor: opts.background}}>
         {Array.isArray(encoded) ? (
           encoded.map((encoded, i) => (
             <Section
@@ -107,7 +111,6 @@ const Section = ({opts, values: { barcodes, text, textWidth, textPos }}: Section
           top: (barcodes[0]?.h ?? opts.height) + opts.textMargin,
           left: textPos,
           width: textWidth,
-          backgroundColor: opts.background
         }}>
           {text}
         </Text>

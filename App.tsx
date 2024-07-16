@@ -16,7 +16,7 @@ export default function App() {
           format: 'EAN13',
           width: 2,
           height: 50,
-          background: 'white',
+          background: 'red',
           color: 'black',
           displayValue: true,
           font: 'monospace',

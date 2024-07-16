@@ -44,6 +44,7 @@ export type Fonts = {
   textAlign: 'left' | 'center' | 'right';
   textPosition: 'top' | 'bottom';
   textMargin: number;
+  textColor?: string;
 }
 
 export type BarValue = {

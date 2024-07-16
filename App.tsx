@@ -17,12 +17,13 @@ export default function App() {
           width: 2,
           height: 50,
           background: 'lime',
-          color: 'black',
+          color: 'red',
           displayValue: true,
           font: 'monospace',
           textAlign: 'center',
           textPosition: 'bottom',
           textMargin: 10,
+          textColor: 'black',
           lastChar: true,
         }}
       />

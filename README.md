@@ -56,7 +56,7 @@ regarding each value inside options:
 | Value         | Type      | Default   | Comment        |
 | ------------- | --------- | --------- | -------------- |
 | format        | Format    | 'CODE128' | the format you want to use to display the barcode  |
-| width         | int       | 2         | the width of the barcode                           |
+| width         | int       | 2         | the base width of a barcode's bar                  |
 | height        | int       | 100       | the height of the barcode                          |
 | background    | string    | white     | the background color of the object                 |
 | color         | string    | black     | the color of the bars of the barcode               |

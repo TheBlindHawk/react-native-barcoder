@@ -8,6 +8,7 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
 
   const opts = { ...defaults.options, ...options } as Options & Fonts
   const encoder = new formats[opts.format](value, opts)
+  const lastChar = (opts as any as { lastChar: boolean }).lastChar;
 
   if (!encoder.valid()) {
     throw new Error(`${value} is not a valid input for ${opts.format} barcode.`)
@@ -15,6 +16,9 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
 
   const encoded: Encoded | Encoded[] = encoder.encode()
   let leftmost = 0
+
+  const baseH = opts.height + (opts.displayValue ? opts.textMargin * 2 + opts.fontSize : 0)
+  const baseW = encoded instanceof Array ? encoded.reduce((n, {data}) => n + (data?.length ?? 0), 0) : (encoded.data?.length ?? 0) + (lastChar ? opts.fontSize : 0)
 
   const asBarcodes = (encoded: Encoded) => {
     const binary = encoded.data
@@ -43,7 +47,7 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
 
   return (
     <ErrorBoundary>
-      <View style={styles}>
+      <View style={{...styles, height: baseH, width: baseW}}>
         {Array.isArray(encoded) ? (
           encoded.map((encoded, i) => (
             <Section
@@ -57,6 +61,15 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
             opts={opts}
             values={asBarcodes(encoded)}
           />
+        )}
+        {lastChar && (
+          <Text style={{
+            fontSize: opts.fontSize,
+            top: opts.height + opts.textMargin,
+            left: leftmost,
+          }}>
+            {">"}
+          </Text>
         )}
       </View>
     </ErrorBoundary>
@@ -91,7 +104,7 @@ const Section = ({opts, values: { barcodes, text, textWidth, textPos }}: Section
           position: 'absolute',
           textAlign: opts.textAlign,
           fontSize: opts.fontSize,
-          top: barcodes[0]?.h ?? opts.height,
+          top: (barcodes[0]?.h ?? opts.height) + opts.textMargin,
           left: textPos,
           width: textWidth,
           backgroundColor: opts.background

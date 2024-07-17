@@ -8,7 +8,7 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
 
   const opts = { ...defaults.options, ...options } as Options & Fonts
   const encoder = new formats[opts.format](value, opts)
-  const lastChar = (opts as any as { lastChar: boolean }).lastChar;
+  const lastChar = (opts as any as { lastChar: boolean }).lastChar && opts.format === 'EAN13';
 
   if (!encoder.valid()) {
     throw new Error(`${value} is not a valid input for ${opts.format} barcode.`)
@@ -21,7 +21,7 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
   const baseW = (
       encoded instanceof Array ?
       encoded.reduce((n, {data}) => n + (data?.length ?? 0) * opts.width, 0) :
-      encoded.data?.length ?? 0
+      (encoded.data?.length ?? 0) * opts.width
     ) + (lastChar ? opts.fontSize : 0)
 
   const asBarcodes = (encoded: Encoded) => {

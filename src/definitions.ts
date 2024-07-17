@@ -38,12 +38,13 @@ export type EAN13Options = DefaultOptions & {
 export type Options = DefaultOptions | GuardableOptions | EAN13Options
 
 export type Fonts = {
-  fontSize: number;
   font: string;
-  fontOptions: "bold" | "italic" | "bold italic";
+  fontSize: number;
   textAlign: 'left' | 'center' | 'right';
-  textPosition: 'top' | 'bottom';
+  // fontOptions: "bold" | "italic" | "bold italic";
+  // textPosition: 'top' | 'bottom';
   textMargin: number;
+  textColor?: string;
 }
 
 export type BarValue = {
@@ -77,9 +78,9 @@ export const defaults: {
     displayValue: true,
     fontSize: 20,
     font: 'monospace',
-    fontOptions: 'bold',
     textAlign: 'center',
-    textPosition: 'bottom',
+    // fontOptions: 'bold',
+    // textPosition: 'bottom',
     textMargin: 2,
   },
 };

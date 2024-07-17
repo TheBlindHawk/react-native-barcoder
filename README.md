@@ -40,29 +40,45 @@ set up the options parameter
 
 ```typescript
 interface Options = {
+  // barcode display
   format: Format;
   width: number;
   height: number;
   background: string;
   color: string;
   displayValue: boolean;
+  // EAN settings
   flat: boolean;
   lastChar: boolean;
+  // text display
+  font: string;
+  fontSize: number;
+  fontOptions: "bold" | "italic" | "bold italic";
+  textAlign: 'left' | 'center' | 'right';
+  textPosition: 'top' | 'bottom';
+  textMargin: number;
+  textColor?: string;
 };
 ```
 
 regarding each value inside options:
 
-| Value         | Type      | Default   | Comment        |
-| ------------- | --------- | --------- | -------------- |
-| format        | Format    | 'CODE128' | the format you want to use to display the barcode  |
-| width         | int       | 2         | the base width of a barcode's bar                  |
-| height        | int       | 100       | the height of the barcode                          |
-| background    | string    | white     | the background color of the object                 |
-| color         | string    | black     | the color of the bars of the barcode               |
-| displayValue  | boolean   | true      | display/hide the string value of the barcode       |
-| flat          | boolean   | false     | for EAN/UPC only, show/hide barcode guards         |
-| lastChar      | char      | null      | display a last character for EAN13 barcodes        |
+| Value         | Type      | Default     | Comment        |
+| ------------- | --------- | ----------- | -------------- |
+| format        | Format    | 'CODE128'   | the format you want to use to display the barcode  |
+| width         | int       | 2           | the base width of a barcode's bar                  |
+| height        | int       | 100         | the height of the barcode                          |
+| background    | string    | white       | the background color of the object                 |
+| color         | string    | black       | the color of the bars of the barcode               |
+| displayValue  | boolean   | true        | display/hide the string value of the barcode       |
+| flat          | boolean   | false       | for EAN/UPC only, show/hide barcode guards         |
+| lastChar      | char      | null        | display a last character for EAN13 barcodes        |
+| font          | string    | 'monospace' | the font of the text                               |
+| fontSize      | number    | 20          | the font size of the text                          |
+| textAlign     | string    | center      | the alignment of the text                          |
+| fontOptions   | string    | undefined   | bold/italic options for the text                   |
+| textMargin    | number    | 2           | the top and bottom margins of the text             |
+| textColor     | string    | undefined   | used to override the "color" option for the text   |
 
 ### formats
 

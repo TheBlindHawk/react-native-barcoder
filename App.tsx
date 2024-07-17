@@ -21,7 +21,6 @@ export default function App() {
           displayValue: true,
           font: 'monospace',
           textAlign: 'center',
-          textPosition: 'bottom',
           textMargin: 10,
           textColor: 'black',
           lastChar: true,

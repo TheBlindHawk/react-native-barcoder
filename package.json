@@ -1,6 +1,6 @@
 {
     "name": "react-native-barcoder",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "description": "a minimal react-native package for displaying a barcode",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",

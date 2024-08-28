@@ -9,7 +9,7 @@
     ],
     "peerDependencies": {
         "react": "^18.2.0",
-        "react-native": "0.73.6"
+        "react-native": "^0.73.6"
     },
     "devDependencies": {
         "@babel/preset-env": "^7.23.9",

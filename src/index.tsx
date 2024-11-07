@@ -70,6 +70,8 @@ const Barcode = ({value, options, ...styles}: Constructor) => {
           <Text style={{
             fontFamily: opts.font,
             fontSize: opts.fontSize,
+            fontStyle: opts.fontStyle,
+            fontWeight: opts.fontWeight,
             top: opts.height + opts.textMargin,
             left: leftmost,
             color: opts.textColor ?? opts.color,
@@ -111,6 +113,8 @@ const Section = ({opts, values: { barcodes, text, textWidth, textPos }}: Section
           position: 'absolute',
           textAlign: opts.textAlign,
           fontSize: opts.fontSize,
+          fontStyle: opts.fontStyle,
+          fontWeight: opts.fontWeight,
           top: (barcodes[0]?.h ?? opts.height) + opts.textMargin,
           left: textPos,
           width: textWidth,

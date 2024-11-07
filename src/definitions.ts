@@ -40,8 +40,9 @@ export type Options = DefaultOptions | GuardableOptions | EAN13Options
 export type Fonts = {
   font: string;
   fontSize: number;
+  fontStyle: 'normal' | 'italic';
+  fontWeight: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
   textAlign: 'left' | 'center' | 'right';
-  // fontOptions: "bold" | "italic" | "bold italic";
   // textPosition: 'top' | 'bottom';
   textMargin: number;
   textColor?: string;
@@ -77,9 +78,10 @@ export const defaults: {
     background: 'white',
     displayValue: true,
     fontSize: 20,
+    fontStyle: 'normal',
+    fontWeight: 'normal',
     font: 'monospace',
     textAlign: 'center',
-    // fontOptions: 'bold',
     // textPosition: 'bottom',
     textMargin: 2,
   },

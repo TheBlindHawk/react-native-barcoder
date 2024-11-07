@@ -53,9 +53,9 @@ interface Options = {
   // text display
   font: string;
   fontSize: number;
-  fontOptions: "bold" | "italic" | "bold italic";
+  fontStyle: 'normal' | 'italic';
+  fontWeight: 'normal' | 'bold' | '100' ~ '900';
   textAlign: 'left' | 'center' | 'right';
-  textPosition: 'top' | 'bottom';
   textMargin: number;
   textColor?: string;
 };
@@ -75,8 +75,9 @@ regarding each value inside options:
 | lastChar      | char      | null        | display a last character for EAN13 barcodes        |
 | font          | string    | 'monospace' | the font of the text                               |
 | fontSize      | number    | 20          | the font size of the text                          |
+| fontStyle     | string    | 'normal'    | normal or italic font settings                     |
+| fontWeight    | string    | 'normal'    | the font weight of the text                        |
 | textAlign     | string    | center      | the alignment of the text                          |
-| fontOptions   | string    | undefined   | bold/italic options for the text                   |
 | textMargin    | number    | 2           | the top and bottom margins of the text             |
 | textColor     | string    | undefined   | used to override the "color" option for the text   |
 
